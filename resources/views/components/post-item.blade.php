@@ -6,7 +6,7 @@
     <div class="bg-white flex flex-col justify-start p-6">
         <div class="flex gap-4">
             @foreach($post->categories as $category)
-                <a href="#" style="color: #15af97;" class=" text-sm font-bold uppercase pb-4">
+                <a href="#" style="color: #d8bfaa" class="text-blue-700 text-sm font-bold uppercase pb-4">
                     {{$category->title}}
                 </a>
             @endforeach
@@ -16,14 +16,14 @@
         </a>
         @if ($showAuthor)
             <p href="#" class="text-sm pb-3">
-                By <a href="#" class="font-semibold hover:text-gray-800">{{$post->user->name}}</a>, Publicado el
+                By <a href="#" class="font-semibold hover:text-gray-800">{{$post->user->name}}</a>, Públicado en
                 {{$post->getFormattedDate()}} | {{ $post->human_read_time }}
             </p>
         @endif
         <a href="{{route('view', $post)}}" class="pb-6">
             {{$post->shortBody()}}
         </a>
-        <a  href="{{route('view', $post)}}" class="uppercase text-gray-800 hover:text-black">Saber más <i
+        <a  href="{{route('view', $post)}}" class="uppercase text-gray-800 hover:text-black">Continuar leyendo <i
                 class="fas fa-arrow-right"></i></a>
     </div>
 </article>

@@ -11,7 +11,7 @@
                 <div class="bg-white flex flex-col justify-start p-6">
                     <div class="flex gap-4">
                         @foreach($post->categories as $category)
-                            <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4">
+                            <a href="#" style="color: #d8bfaa" class="text-blue-700 text-sm font-bold uppercase pb-4">
                                 {{$category->title}}
                             </a>
                         @endforeach
@@ -20,7 +20,7 @@
                         {{$post->title}}
                     </h1>
                     <p href="#" class="text-sm pb-8">
-                        By <a href="#" class="font-semibold hover:text-gray-800">{{$post->user->name}}</a>, Publicado el
+                        By <a href="#" class="font-semibold hover:text-gray-800">{{$post->user->name}}</a>, Públicado en
                         {{$post->getFormattedDate()}} | {{ $post->human_read_time }}
                     </p>
                     <div>
@@ -36,7 +36,7 @@
                     @if($prev)
                         <a href="{{route('view', $prev)}}"
                            class="block w-full bg-white shadow hover:shadow-md text-left p-6">
-                            <p class="text-lg text-blue-800 font-bold flex items-center">
+                            <p style="color: #d8bfaa"  class="text-lg text-blue-800 font-bold flex items-center">
                                 <i class="fas fa-arrow-left pr-1"></i>
                                 Anterior
                             </p>
@@ -48,8 +48,7 @@
                     @if($next)
                         <a href="{{route('view', $next)}}"
                            class="block w-full bg-white shadow hover:shadow-md text-right p-6">
-                            <p class="text-lg text-blue-800 font-bold flex items-center justify-end">
-                                Siguiente
+                            <p style="color: #d8bfaa" class="text-lg text-blue-800 font-bold flex items-center justify-end">Siguiente
                                 <i
                                     class="fas fa-arrow-right pl-1"></i></p>
                             <p class="pt-2">

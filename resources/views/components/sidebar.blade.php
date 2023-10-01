@@ -5,7 +5,7 @@
         <h3 class="text-xl font-semibold mb-3">Todas las categorías
         </h3>
         @foreach($categories as $category)
-            <a href="{{route('by-category', $category)}}"
+            <a href="{{route('by-category', $category)}}" style="background-color: #bfd1e5"
                class="text-semibold block py-2 px-3 rounded {{ request('category')?->slug === $category->slug
                 ? 'bg-blue-600 text-white' :  ''}}">
                 {{$category->title}} ({{$category->total}})
@@ -18,9 +18,9 @@
             {{ \App\Models\TextWidget::getTitle('about-us-sidebar') }}
         </p>
         {!! \App\Models\TextWidget::getContent('about-us-sidebar') !!}
-        <a href="{{route('about-us')}}" style="background: #15af97;"
-           class="w-full text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4">
-            Conocenos
+        <a href="{{route('about-us')}}" style="background-color: #bfd1e5"
+           class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4">
+            Sobre nosotros
         </a>
     </div>
 </aside>

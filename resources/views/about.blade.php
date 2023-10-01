@@ -1,4 +1,4 @@
-<x-app-layout meta-title="San Luis Show Blog - About us">
+<x-app-layout meta-title="Estilo San Luis - Sobre Nosotro">
 
     <div class="container mx-auto flex flex-wrap py-6">
 

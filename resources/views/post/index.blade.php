@@ -1,4 +1,4 @@
-<x-app-layout :meta-title="'San Luis SHow Blog - ' . $category->title"
+<x-app-layout :meta-title="'Estilo San Luis - ' . $category->title"
               :meta-description="'Posts filtered by category ' . $category->title">
     <div class="container mx-auto flex flex-wrap py-6">
 

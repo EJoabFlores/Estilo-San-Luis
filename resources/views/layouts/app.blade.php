@@ -3,15 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $metaTitle ?: 'San Luis Show Blog' }}</title>
-    <meta name="author" content="Blog de farándula, tendencias y más.">
+    <title>{{ $metaTitle ?: 'Estilo San Luis' }}</title>
+    <meta name="author" content="Estilo San Luis">
     <meta name="description" content="{{ $metaDescription }}">
+    <link rel="icon" href="../img/favico.png" alt="logo-estilo">
 
     <style>
-        @import url('href="https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@1,800&display=swap"');
-    </style>
+        @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
 
-    <link href="/dist/output.css" rel="stylesheet">
+        body::-webkit-scrollbar{
+            width: 10px;
+        }
+
+        body::-webkit-scrollbar-track{
+            background-color: transparent;
+        }
+
+        body::-webkit-scrollbar-thumb{
+            background: #d8bfaa;
+            border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -ms-border-radius: 10px;
+            -o-border-radius: 10px;
+        }
+
+        p.slogan{
+            margin-top:  10px;
+            color: #d8bfaa;
+            font-size: 40px;
+        }
+        a.nav:hover{
+            background-color: #bfd1e5;
+        }
+
+        button.login{
+            background-color: #bfd1e5;
+        }
+        button.login:hover{
+            background-color: #EBF5EE;
+            color: #d8bfaa;
+        }
+
+        h2.subtitle{
+            color: #d8bfaa;
+            border-bottom-color: #d8bfaa;
+        }
+
+        @media (max-width:1250px){
+            img.logo{
+                width: 500px;
+            }
+            p.slogan{
+                font-size: 20px;
+            }
+            aside{
+                display: none;
+            }
+        }
+
+        @media (max-width:790px){
+            img.logo{
+                width: 500px;
+            }
+            p.slogan{
+                font-size: 20px;
+            }
+        }
+
+
+
+    </style>
 
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
@@ -21,16 +83,16 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-gray-50 font-family-Alumni-Sans-bold">
+<body class="bg-gray-50 font-family-karla">
 
 
 <!-- Text Header -->
 <header class="w-full container mx-auto">
     <div class="flex flex-col items-center py-12">
         <a class="font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl" href="{{route('home')}}">
-           <img style="max-width: 400px" src="img/san_luis_show.png"/>
+            <center><img class="logo" style="max-width: 60%" src="../img/logo-Estilo.png"></center>
         </a>
-        <p class="text-lg text-gray-600">
+        <p class="slogan">
             {{ \App\Models\TextWidget::getTitle('header') }}
         </p>
     </div>
@@ -41,7 +103,7 @@
     <div class="block sm:hidden">
         <a
             href="#"
-            class="block md:hidden text-base font-bold uppercase text-center flex justify-center items-center"
+            class="nav block md:hidden text-base font-bold uppercase text-center flex justify-center items-center"
             @click="open = !open"
         >
             Topics <i :class="open ? 'fa-chevron-down': 'fa-chevron-up'" class="fas ml-2"></i>
@@ -51,26 +113,26 @@
         <div
             class="w-full container mx-auto flex flex-col sm:flex-row items-center justify-between text-sm font-bold uppercase mt-0 px-6 py-2">
             <div>
-                <a href="{{route('home')}}" style="color: #15af97"  class="hover:text-white rounded py-2 px-4 mx-2">Inicio</a>
+                <a href="{{route('home')}}" class="nav hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2">Inicio</a>
                 @foreach($categories as $category)
                     <a href="{{route('by-category', $category)}}"
-                       class="hover:bg-pink-400 hover:text-white rounded py-2 px-4 mx-2">{{$category->title}}</a>
+                       class="nav hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2">{{$category->title}}</a>
                 @endforeach
-                <a href="{{route('about-us')}}" style="color: #15af97" class="hover:text-white rounded py-2 px-4 mx-2">Sobre Nosotros</a>
+                <a href="{{route('about-us')}}" class="nav hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2">Nosotros</a>
             </div>
 
             <div class="flex items-center">
                 <form method="get" action="{{route('search')}}">
                     <input name="q" value="{{request()->get('q')}}"
                            class="block w-full rounded-md border-0 px-3.5 py-2 t0ext-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 font-medium"
-                           placeholder="Type an hit enter to search anything"/>
+                           placeholder="Buscar nota"/>
                 </form>
                 @auth
                     <div class="flex sm:items-center sm:ml-6">
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
                                 <button
-                                    class="hover:bg-blue-600 hover:text-white flex items-center rounded py-2 px-4 mx-2">
+                                    class="login hover:bg-blue-600 hover:text-white flex items-center rounded py-2 px-4 mx-2">
                                     <div>{{ Auth::user()->name }}</div>
 
                                     <div class="ml-1">
@@ -86,7 +148,7 @@
 
                             <x-slot name="content">
                                 <x-dropdown-link :href="route('profile.edit')">
-                                    {{ __('Profile') }}
+                                    {{ __('Mi perfil') }}
                                 </x-dropdown-link>
 
                                 <!-- Authentication -->
@@ -96,7 +158,7 @@
                                     <x-dropdown-link :href="route('logout')"
                                                      onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                        {{ __('Log Out') }}
+                                        {{ __('Salir') }}
                                     </x-dropdown-link>
                                 </form>
                             </x-slot>
@@ -104,8 +166,8 @@
                     </div>
                 @else
                     <a href="{{route('login')}}"
-                       class="hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2">Entrar</a>
-                    <a href="{{route('register')}}" style="background: #e6007e" class="text-white rounded py-2 px-4 mx-2">Registrate</a>
+                       class="nav hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2">Login</a>
+                    <a href="{{route('register')}}" style="background-color: #bfd1e5" class="bloque bg-blue-600 text-white rounded py-2 px-4 mx-2">Regístrate</a>
                 @endauth
             </div>
         </div>
@@ -121,8 +183,7 @@
 
 <footer class="w-full border-t bg-white pb-12">
     <div class="w-full container mx-auto flex flex-col items-center">
-        <div class="uppercase py-6">&copy;San Luis Show <strong>Todos los derechos reservados</strong></div>
-        <div class="uppercase py-6">&copy;Create by <a rel="dofollow" href="https://enriquejoabfg.com">EJoabFlores</a></div>
+        <div class="uppercase py-6">&copy; Estilo San Luis</div>
     </div>
 </footer>
 
